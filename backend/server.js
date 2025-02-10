@@ -5,7 +5,7 @@ const estimateRoutes = require('./routes/estimateRoutes');
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(cors({ origin: "https://lead-front-o3y0d4v2i-sai-nsgs-projects.vercel.app" }));  
+app.use(cors({ origin: "https://lead-front-pi.vercel.app" }));  
 connectDB();
 
 app.use(express.json());
