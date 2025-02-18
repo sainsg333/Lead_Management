@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://username:username123@cluster0.0dcz2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+    await mongoose.connect(process.env.db2, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds

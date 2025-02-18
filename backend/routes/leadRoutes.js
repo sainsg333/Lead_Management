@@ -1,6 +1,6 @@
 const express = require('express');
 const leadController = require('../controllers/leadController');
-
+const authMiddleware = require("../middleware/authMiddleware");
 const router = express.Router();
 
 router.post('/', leadController.createLead);

@@ -1,14 +1,18 @@
 const Lead = require('../models/Lead');
 
+
 exports.createLead = async (req, res) => {
   try {
-    const lead = new Lead(req.body);
+    const { name, contact, source, status, referralCode } = req.body;
+    const lead = new Lead({ name, contact, source, status, referralCode });
     await lead.save();
     res.status(201).json(lead);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
+
+// Other functions remain unchanged...
 
 exports.getLeads = async (req, res) => {
   try {

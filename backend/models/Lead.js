@@ -5,6 +5,7 @@ const LeadSchema = new mongoose.Schema({
   contact: { type: String, required: true },
   source: { type: String, required: true },
   status: { type: String, default: 'New' },
+  referralCode: { type: String, default: '' }, // Add this line
   createdAt: { type: Date, default: Date.now },
 });
 
