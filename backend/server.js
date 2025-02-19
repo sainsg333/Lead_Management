@@ -8,14 +8,7 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: process.env.origin || "*",  // Allow all origins or specific one from .env
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: "Content-Type,Authorization",
-  credentials: true
-}));
-
-app.use(cors({ origin: "https://lead-front-sai-nsgs-projects.vercel.app" }));  
+app.use(cors({ origin: "*", credentials: true }));
 connectDB();
 
 app.use(express.json());
