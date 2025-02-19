@@ -11,7 +11,25 @@ exports.register = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
+const speakeasy = require("speakeasy");
+const qr = require("qr-image");
+exports.generateSecret = async (req, res) => {
+  const secret = speakeasy.generateSecret({ length: 20 });
+  res.json({ secret: secret.base32, qrCode: qr.imageSync(secret.otpauth_url, { type: "png" }) });
+};
+exports.verifyOTP = async (req, res) => {
+  const { token, secret } = req.body;
+  const verified = speakeasy.totp.verify({
+    secret,
+    encoding: "base32",
+    token,
+  });
+  if (verified) {
+    res.json({ success: true });
+  } else {
+    res.status(400).json({ error: "Invalid OTP" });
+  }
+};
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
